@@ -1,0 +1,22 @@
+id: dfeaf514-9fe2-4344-962c-807914f04d64
+timestamp: 2023-12-08T13:32:32.022Z
+source: TAP-GUI
+username: mpluya
+accelerator:
+  name: tanzu-java-web-app
+fragments:
+  - name: build-wrapper-gradle
+  - name: build-wrapper-maven
+  - name: devcontainer
+  - name: java-version
+  - name: tap-workload
+options:
+  bsGitBranch: main
+  projectName: tanzu-java-web-app-1-7-azure
+  buildTool: maven
+  springBootVersion: 3.1
+  nativeBuild: false
+  javaVersion: 17
+  includeBuildToolWrapper: true
+  includeDevContainer: true
+  bsGitRepository: github.com?owner=Mpluya&repo=tanzu-java-web-app-1.7
