@@ -2,6 +2,7 @@ apiVersion: carto.run/v1alpha1
 kind: Workload
 metadata:
   name: tanzu-java-web-app-1-7-azure
+  namespace: mae
   labels:
     apps.tanzu.vmware.com/workload-type: web
     apps.tanzu.vmware.com/has-tests: "true"
@@ -16,8 +17,12 @@ spec:
   - name: annotations
     value:
       autoscaling.knative.dev/minScale: "1"
+  - name: testing_pipeline_matching_labels
+    value:
+      apps.tanzu.vmware.com/pipeline: test
+      apps.tanzu.vmware.com/language: java
   source:
     git:
-      url: https://github.com/Mpluya/tanzu-java-web-app-1.7
+      url: ssh://git@github.com/Mpluya/tanzu-java-web-app-1.7
       ref:
         branch: main
