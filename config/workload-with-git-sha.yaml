@@ -1,0 +1,28 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: workload-with-git-sha
+  namespace: mae
+  labels:
+    apps.tanzu.vmware.com/workload-type: server-with-git-annotation
+    apps.tanzu.vmware.com/has-tests: "true"
+    apps.tanzu.vmware.com/auto-configure-actuators: "true"
+    app.kubernetes.io/part-of: workload-with-git-sha
+spec:
+  build:
+    env:
+      - name: BP_JVM_VERSION
+        value: "17"
+  params:
+  - name: annotations
+    value:
+      autoscaling.knative.dev/minScale: "1"
+  - name: testing_pipeline_matching_labels
+    value:
+      apps.tanzu.vmware.com/pipeline: test
+      apps.tanzu.vmware.com/language: java
+  source:
+    git:
+      url: ssh://git@github.com/Mpluya/tanzu-java-web-app-1.7
+      ref:
+        branch: main
